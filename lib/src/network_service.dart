@@ -139,10 +139,16 @@ class NetworkService {
   NetworkErrorType _getErrorType(DioException dioException) {
     switch (dioException.type) {
       case DioExceptionType.connectionTimeout:
+        return NetworkErrorType.connectionTimeout;
+
       case DioExceptionType.sendTimeout:
+        return NetworkErrorType.sendTimeout;
+
       case DioExceptionType.receiveTimeout:
+        return NetworkErrorType.receiveTimeout;
+
       case DioExceptionType.connectionError:
-        return NetworkErrorType.badConnection;
+        return NetworkErrorType.connectionError;
 
       case DioExceptionType.badResponse:
       case DioExceptionType.badCertificate:
@@ -153,7 +159,7 @@ class NetworkService {
 
       case DioExceptionType.unknown:
         if (dioException.error is SocketException) {
-          return NetworkErrorType.badConnection;
+          return NetworkErrorType.connectionError;
         } else {
           return NetworkErrorType.other;
         }
