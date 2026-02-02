@@ -179,6 +179,8 @@ class NetworkService {
       return NetworkErrorType.noData;
     } else if (statusCode == 422) {
       return NetworkErrorType.unprocessable;
+    } else if (statusCode == 429) {
+      return NetworkErrorType.rateLimit;
     } else if (statusCode >= 500) {
       return NetworkErrorType.server;
     }

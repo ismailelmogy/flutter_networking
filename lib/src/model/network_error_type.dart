@@ -6,6 +6,7 @@ enum NetworkErrorType {
   forbidden, //403
   noData, //404
   unprocessable, //422
+  rateLimit, //429
   connectionTimeout, // Failed to establish connection within timeout
   sendTimeout, // Request body couldn't be sent within timeout
   receiveTimeout, // Server took too long to respond
